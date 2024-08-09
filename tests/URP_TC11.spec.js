@@ -42,5 +42,4 @@ test.describe('Registration Page Test', () => {
     });
 
 
-
 });
