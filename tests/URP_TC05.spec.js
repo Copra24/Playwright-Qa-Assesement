@@ -16,7 +16,7 @@ test.describe('Registration Page Test', () => {
       
     });
 
-    test('Verify First Name Field correctly rejects  numerical characters', async ({ page }) => {
+    test('Verify First Name Field correctly rejects numerical characters', async ({ page }) => {
     const locators = await fieldsLocators(page);//Create object of the fieldsLocators
     //verify the first name input field is enabled
     await expect(locators.firstName).toBeEnabled();
@@ -24,7 +24,7 @@ test.describe('Registration Page Test', () => {
     //Enters Invalid first name
      await locators.firstName.fill(user.first_name[3]);
 
-     // Handle the dialog that appears when the first name field is left empty
+     // Handle the dialog that appears when the first name field is filled with  numerical characters
   page.on('dialog', async dialog => {
     dialogHandled = true;
     try {

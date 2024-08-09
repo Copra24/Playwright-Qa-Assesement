@@ -16,18 +16,19 @@ test.describe('Registration Page Test', () => {
       
     });
 
-    test('Verify First Name Field correctly rejects white spaces between letters', async ({ page }) => {
+    test('Verify Last Name Field correctly accept Capitalized alphabetic characters', async ({ page }) => {
     const locators = await fieldsLocators(page);//Create object of the fieldsLocators
-    
-    //Enters Invalid first name
-     await locators.firstName.fill(user.first_name[3]);
+    //Enter valid First name
+    await locators.firstName.fill(user.first_name[0])
+    //Enters valid Last name
+     await locators.lastName.fill(user.last_name[1]);
 
-     // Handle the dialog that appears when the first name is filled with  white spaces between letters
+     // Handle the dialog that appears when the Last name field is filled with Capitalized alphabetic characters
   page.on('dialog', async dialog => {
     dialogHandled = true;
     try {
       // Assert the alert message
-      expect(dialog.message()).toBe('First name must contain alphabetical characters only');
+      expect(dialog.message()).toBe('Email must be filled out');
       await dialog.accept();
     } catch (error) {
       console.error('Error handling the dialog:', error);
