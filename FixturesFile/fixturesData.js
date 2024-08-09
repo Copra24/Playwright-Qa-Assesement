@@ -2,9 +2,9 @@ function UserData() {
     return {
       first_name: ['John','John%-+', 'John123-','Jo hn',''],
       last_name: ['Smith', 'SMITH', '12345', 'Smi th', 'Smith@','Smith%-','',''],
-      email_: ['john.smith@example.com','john.smithexample.com','john.smith@example','',''],
-      password_: 'P@ssw0rd',
-      confirm_password: 'P@ssw0rd',
+      email_: ['john.smith@example.com','john.smithexample.com','john.smith@example','JOHN.SMITH@EXAMPLE.COM',''],
+      password_: ['P@ssw0rd'],
+      confirm_password: ['P@ssw0rd'],
       gender_: 'male',
       date_Of_birth: '1990-01-01',
       phone_number: '1234567890',

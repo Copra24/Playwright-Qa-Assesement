@@ -22,7 +22,7 @@ test.describe('Registration Page Test', () => {
     await locators.firstName.fill(user.first_name[0]);
     //Enter valid Last name
     await locators.lastName.fill(user.last_name[0]);
-    //Enters valid Email
+    //Enters invalid Email
     await locators.email.fill(user.email_[1]);
 
     

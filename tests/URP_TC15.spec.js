@@ -15,24 +15,24 @@ test.describe('Registration Page Test', () => {
       
     });
 
-    test('Verify Email Field accept valid email format', async ({ page }) => {
+    test('Verify Email Field  correctly handles Case Insensitivity', async ({ page }) => {
     const locators = await fieldsLocators(page);//Create object of the fieldsLocators
 
     //Enter valid First name
     await locators.firstName.fill(user.first_name[0]);
     //Enter valid Last name
     await locators.lastName.fill(user.last_name[0]);
-    //Enters invalid Email
-    await locators.email.fill(user.email_[2]);
+    //Enters valid Email
+    await locators.email.fill(user.email_[3]);
 
     
 
-     // Handle the dialog that appears when the Email field is filled with invalid email format
+     // Handle the dialog that appears when the Email field is filled with valid email format
   page.on('dialog', async dialog => {
     dialogHandled = true;
     try {
       // Assert the alert message
-      expect(dialog.message()).toBe('Email must be a valid email address');
+      expect(dialog.message()).toBe('Confirm password must be filled out'); //Used as a verification point to assert the email format was accepted and next field required
       await dialog.accept();
     } catch (error) {
       console.error('Error handling the dialog:', error);
@@ -44,5 +44,5 @@ test.describe('Registration Page Test', () => {
      await locators.submitButton.click()
 
     });
-
+    
     });
