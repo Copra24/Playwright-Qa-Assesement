@@ -1,7 +1,6 @@
 function UserData() {
     return {
-      //Valid data
-      first_name: ['John','John%-+', 'John123-'],
+      first_name: ['John','John%-+', 'John123-','Jo hn'],
       last_name: 'Smith',
       email_: 'john.smith@example.com',
       password_: 'P@ssw0rd',

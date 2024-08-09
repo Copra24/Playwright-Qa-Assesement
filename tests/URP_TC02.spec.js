@@ -16,7 +16,7 @@ test.describe('Registration Page Test', () => {
       
     });
 
-    test('Verify First Name Field Correctly Rejects Alphanumeric Characters and Arithmetic Symbols', async ({ page }) => {
+    test('Verify First Name field correctly rejects special characters and Arithmetic symbols', async ({ page }) => {
     const locators = await fieldsLocators(page);//Create object of the fieldsLocators
     //verify the first name input field is enabled
     await expect(locators.firstName).toBeEnabled();

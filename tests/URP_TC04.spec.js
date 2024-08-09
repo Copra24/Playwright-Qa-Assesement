@@ -16,13 +16,13 @@ test.describe('Registration Page Test', () => {
       
     });
 
-    test('Verify First Name field correclty  rejects Alphanumeric characters and Arithmetic Symbols', async ({ page }) => {
+    test('Verify First Name Field correctly rejects white spaces between letters', async ({ page }) => {
     const locators = await fieldsLocators(page);//Create object of the fieldsLocators
     //verify the first name input field is enabled
     await expect(locators.firstName).toBeEnabled();
     
     //Enters Invalid first name
-     await locators.firstName.fill(user.first_name[2]);
+     await locators.firstName.fill(user.first_name[3]);
 
      // Handle the dialog that appears when the first name field is left empty
   page.on('dialog', async dialog => {
