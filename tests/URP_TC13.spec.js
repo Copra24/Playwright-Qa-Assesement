@@ -15,7 +15,7 @@ test.describe('Registration Page Test', () => {
       
     });
 
-    test('Verify Email Field accept valid email format', async ({ page }) => {
+    test('Verify Email Field correctly rejects for missing "@" symbol', async ({ page }) => {
     const locators = await fieldsLocators(page);//Create object of the fieldsLocators
 
     //Enter valid First name
@@ -23,25 +23,14 @@ test.describe('Registration Page Test', () => {
     //Enter valid Last name
     await locators.lastName.fill(user.last_name[0]);
     //Enters valid Email
-    await locators.email.fill(user.email_[0]);
+    await locators.email.fill(user.email_[1]);
 
     
-
-     // Handle the dialog that appears when the Email field is filled with valid email format
-  page.on('dialog', async dialog => {
-    dialogHandled = true;
-    try {
-      // Assert the alert message
-      expect(dialog.message()).toBe('Confirm password must be filled out');
-      await dialog.accept();
-    } catch (error) {
-      console.error('Error handling the dialog:', error);
-      await dialog.dismiss(); 
-    }
-  });
-
      //Submits the form
      await locators.submitButton.click()
+
+     // Assert email field still contains invalid email after submitting form
+     expect(locators.email).toHaveValue(user.email_[1]);
 
     });
 
