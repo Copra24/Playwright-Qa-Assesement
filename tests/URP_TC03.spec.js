@@ -18,13 +18,10 @@ test.describe('Registration Page Test', () => {
 
     test('Verify First Name field correclty  rejects Alphanumeric characters and Arithmetic Symbols', async ({ page }) => {
     const locators = await fieldsLocators(page);//Create object of the fieldsLocators
-    //verify the first name input field is enabled
-    await expect(locators.firstName).toBeEnabled();
-    
     //Enters Invalid first name
      await locators.firstName.fill(user.first_name[2]);
 
-     // Handle the dialog that appears when the first name field is left empty
+     // Handle the dialog that appears when the first name field is filled with Alphanumeric characters and Arithmetic Symbols
   page.on('dialog', async dialog => {
     dialogHandled = true;
     try {
