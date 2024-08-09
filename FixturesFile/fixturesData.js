@@ -1,7 +1,7 @@
 function UserData() {
     return {
       first_name: ['John','John%-+', 'John123-','Jo hn'],
-      last_name: 'Smith',
+      last_name: ['Smith', 'SMITH',],
       email_: 'john.smith@example.com',
       password_: 'P@ssw0rd',
       confirm_password: 'P@ssw0rd',
