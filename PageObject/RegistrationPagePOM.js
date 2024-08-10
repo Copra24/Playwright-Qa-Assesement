@@ -31,10 +31,12 @@ async function fieldsLocators(page){
   const genderPNTS = page.locator('input#preferNotToSay');
   const dob = page.locator('input#dob');
   const phoneNumber = page.locator('input[name="phone"]')
-  const addressField = page.locator('input[name="address"]')
-  const linkedinUrl = page.locator('input[name="linkedIn"]')
-  const githubField = page.locator('input[name="github"]')
-  const submitButton = page.locator('input[type="submit"][value="Submit"]')
+  const addressField = page.locator('input[name="address"]');
+  const linkedinUrl = page.locator('input[name="linkedIn"]');
+  const githubField = page.locator('input[name="github"]');
+  const submitButton = page.locator('input[type="submit"][value="Submit"]');
+  const dobLabel = page.locator('label[for="dob"]');
+
 
   return {
     firstName,
@@ -50,7 +52,8 @@ async function fieldsLocators(page){
     addressField,
     linkedinUrl,
     githubField,
-    submitButton
+    submitButton,
+    dobLabel
   };
 
 }
