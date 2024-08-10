@@ -1,38 +1,37 @@
 const { test, expect } = require('@playwright/test');
-const {navigate, fillOptionalFields, fieldsLocators } = require('../PageObject/RegistrationPagePOM');
+const {navigate, fillAllFields, fieldsLocators } = require('../PageObject/RegistrationPagePOM');
 const { UserData } = require('../FixturesFile/fixturesData');
 
 test.describe('Registration Page Test', () => {
 
     const user = UserData();
-
-    let dialogHandled = false;
   
     test.beforeEach(async ({ page }) => {
       await navigate(page);
       
     });
 
-test('Verify Form Rejects Submission When Only Optional Fields Are Filled', async ({ page }) => {
+test('Verify User Profile Not Created with Last Name Field Left Unfilled', async ({ page }) => {
     const locators = await fieldsLocators(page);
     
-//fills out all optional fields with valid data
-await fillOptionalFields(page, user);
+    await locators.lastName.fill(user.last_name[0] = '');
 
-page.on('dialog', async dialog => {
+     
+  
+  page.on('dialog', async dialog => {
     dialogHandled = true;
     try {
-      expect(dialog.message()).toBe('First name must be filled out');
+      expect(dialog.message()).toBe('Last name must be filled out');
       await dialog.accept();
     } catch (error) {
       console.error('Error handling the dialog:', error);
       await dialog.dismiss(); 
     }
   });
-  
-await locators.submitButton.click()
 
+  await fillAllFields(page, user);
 
   });
 
-});
+  });
+

@@ -16,7 +16,7 @@ test.describe('Registration Page Test', () => {
     });
 
     test('Verify First Name field correctly rejects special characters and Arithmetic symbols', async ({ page }) => {
-    const locators = fieldsLocators(page);
+    const locators = await fieldsLocators(page);
     //Enters Invalid first name
      await locators.firstName.fill(user.first_name[1]);
 

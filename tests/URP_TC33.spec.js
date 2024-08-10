@@ -1,25 +1,27 @@
 const { test, expect } = require('@playwright/test');
-const {navigate, fillOptionalFields, fieldsLocators } = require('../PageObject/RegistrationPagePOM');
+const {navigate, fillAllFields, fieldsLocators } = require('../PageObject/RegistrationPagePOM');
 const { UserData } = require('../FixturesFile/fixturesData');
 
 test.describe('Registration Page Test', () => {
 
     const user = UserData();
-
-    let dialogHandled = false;
   
     test.beforeEach(async ({ page }) => {
       await navigate(page);
       
     });
 
-test('Verify Form Rejects Submission When Only Optional Fields Are Filled', async ({ page }) => {
+test('Verify User Profile Is Not Created with First Name Field Left Unfilled', async ({ page }) => {
     const locators = await fieldsLocators(page);
     
-//fills out all optional fields with valid data
-await fillOptionalFields(page, user);
 
-page.on('dialog', async dialog => {
+    // Clear the first name field
+    await locators.firstName.fill(user.first_name[0] = '');
+
+     
+  
+     // Handle the dialog that appears when the first name field is left empty
+  page.on('dialog', async dialog => {
     dialogHandled = true;
     try {
       expect(dialog.message()).toBe('First name must be filled out');
@@ -29,10 +31,11 @@ page.on('dialog', async dialog => {
       await dialog.dismiss(); 
     }
   });
-  
-await locators.submitButton.click()
 
+  // Fill the registration form
+  await fillAllFields(page, user);
 
   });
 
-});
+  });
+
