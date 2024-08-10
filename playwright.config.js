@@ -4,7 +4,7 @@ const { defineConfig } = require('@playwright/test');
 module.exports = defineConfig({
 
 
-  testDir: './tests', // Updates with test directory
+  testDir: './tests', 
   timeout: 60000,
   retries: 1,
   reporter: [
@@ -14,14 +14,15 @@ module.exports = defineConfig({
 
   use: {
     browserName: 'chromium',
+    baseURL: 'https://qa-assessment.pages.dev/',
     headless: false,
     screenshot: 'on',
     video: 'off',
-   
-  
     
   
-  },
+  }
+
+
 });
 
 

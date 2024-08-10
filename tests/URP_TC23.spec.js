@@ -4,8 +4,8 @@ const { UserData } = require('../FixturesFile/fixturesData');
 
 test.describe('Registration Page Test', () => {
 
-    const user = UserData();// Creates object of UserData
-    
+    const user = UserData();
+  
     test.beforeEach(async ({ page }) => {
   
       // Navigates to the registration page Url from the Pom
@@ -13,14 +13,18 @@ test.describe('Registration Page Test', () => {
       
     });
 
-
-    test('Verify the date of birth  field label is correctly displayed', async ({ page }) => {
+    test('Verify Phone Number Field Acceptance of Numerical Characters', async ({ page }) => {
     const locators = await fieldsLocators(page);//Create object of the fieldsLocators
+      
+        // Fill the phone number field with a valid numeric input
+        await locators.phoneNumber.fill(user.phone_number[0]);
+        
 
-          //Asserts the text content of lable is correctly displayed
-          expect(locators.dobLabel).toHaveValue('Date of Birth (optional):')
-    
+        // Assert that the input value matches the expected valid numeric phone number
+        await expect(locators.phoneNumber).toHaveValue(user.phone_number[0]);
 
     });
-    });
-    
+
+
+
+});
