@@ -5,6 +5,7 @@ const { UserData } = require('../FixturesFile/fixturesData');
 test.describe('Registration Page Test', () => {
 
     const user = UserData();
+
     let dialogHandled = false;
   
     test.beforeEach(async ({ page }) => {
@@ -13,16 +14,17 @@ test.describe('Registration Page Test', () => {
       
     });
 
-    test('Verify Address Field Acceptance of Valid Input', async ({ page }) => {
+    test('Verify Address Field Acceptance of Special Characters', async ({ page }) => {
     const locators = await fieldsLocators(page);
       
         // Fill the address field with invalid input
-        await locators.addressField.fill(user.address_[0])
+        await locators.linkedinUrl.fill(user.linkedin_url[0])
 
         page.on('dialog', async dialog => {
             dialogHandled = true;
             try {
-              expect(dialog.message()).toBe('First name must be filled out');//verification to assert address value was accepted and required input needed
+              // Assert the alert message
+              expect(dialog.message()).toBe('First name must be filled out');//verification to assert Linkedinvalue was accepted and next required input needed
               await dialog.accept();
             } catch (error) {
               console.error('Error handling the dialog:', error);
@@ -30,7 +32,9 @@ test.describe('Registration Page Test', () => {
             }
           });
 
+        //Submits the form
      await locators.submitButton.click()
+        
 
     });
     });

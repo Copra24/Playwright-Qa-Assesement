@@ -4,9 +4,9 @@ const { UserData } = require('../FixturesFile/fixturesData');
 
 test.describe('Registration Page Test', () => {
 
-    const user = UserData();// Creates object of UserData
+    const user = UserData();
 
-    let dialogHandled = false;// Initialize a flag to track whether a dialog (such as an alert or confirmation) has been handled during the test
+    let dialogHandled = false;
 
   
     test.beforeEach(async ({ page }) => {
@@ -17,7 +17,7 @@ test.describe('Registration Page Test', () => {
     });
 
     test('Verify First Name Field correctly rejects numerical characters', async ({ page }) => {
-    const locators = await fieldsLocators(page);//Create object of the fieldsLocators
+    const locators = await fieldsLocators(page);
     //verify the first name input field is enabled
     await expect(locators.firstName).toBeEnabled();
     
@@ -28,7 +28,6 @@ test.describe('Registration Page Test', () => {
   page.on('dialog', async dialog => {
     dialogHandled = true;
     try {
-      // Assert the alert message
       expect(dialog.message()).toBe('First name must contain alphabetical characters only');
       await dialog.accept();
     } catch (error) {
@@ -37,7 +36,7 @@ test.describe('Registration Page Test', () => {
     }
   });
 
-     //Submits the form
+     
      await locators.submitButton.click()
 
     });

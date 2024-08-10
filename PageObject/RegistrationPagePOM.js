@@ -1,23 +1,47 @@
 const { expect } = require('@playwright/test');
+const { UserData } = require('../FixturesFile/fixturesData');
+const user = UserData();
 
 async function navigate(page) {
   await page.goto('https://qa-assessment.pages.dev/');
 }
 
-async function fillRegistrationForm(page, user) {
-  await page.locator('input[name="firstName"]').fill(user.firstName);
-  await page.locator('input[name="lastName"]').fill(user.lastName);
-  await page.locator('input[name="email"]').fill(user.email);
-  await page.locator('input[name="password"]').fill(user.password);
-  await page.locator('input[name="confirmPassword"]').fill(user.confirmPassword);
+async function fillAllFields(page) {
+ 
+  await page.locator('input[name="firstName"]').fill(user.first_name[0]);
+  await page.locator('input[name="lastName"]').fill(user.last_name[0]);
+  await page.locator('input[name="email"]').fill(user.email_[0]);
+  await page.locator('input[name="password"]').fill(user.password_[0]);
+  await page.locator('input[name="confirmPassword"]').fill(user.confirm_password[0]);
   await page.check('input#male');
-  await page.fill('input#dob', user.dateOfBirth);
-  await page.locator('input[name="phone"]').fill(user.phoneNumber);
-  await page.locator('input[name="address"]').fill(user.address);
-  await page.locator('input[name="linkedIn"]').fill(user.linkedinUrl);
-  await page.locator('input[name="github"]').fill(user.githubUrl);
+  await page.fill('input#dob', user.date_Of_birth[0]);
+  await page.locator('input[name="phone"]').fill(user.phone_number[0]);
+  await page.locator('input[name="address"]').fill(user.address_[0]);
+  await page.locator('input[name="linkedIn"]').fill(user.linkedin_url[0]);
+  await page.locator('input[name="github"]').fill(user.github_url[0]);
   await page.locator('input[type="submit"][value="Submit"]').click();
 
+}
+async function fillMandatoryFields(page) {
+ 
+  await page.locator('input[name="firstName"]').fill(user.first_name[0]);
+  await page.locator('input[name="lastName"]').fill(user.last_name[0]);
+  await page.locator('input[name="email"]').fill(user.email_[0]);
+  await page.locator('input[name="password"]').fill(user.password_[0]);
+  await page.locator('input[name="confirmPassword"]').fill(user.confirm_password[0]);
+  await page.locator('input[type="submit"][value="Submit"]').click();
+
+}
+
+async function filOptionalFields(page) {
+  
+  await page.check('input#male');
+  await page.fill('input#dob', user.date_Of_birth[0]);
+  await page.locator('input[name="phone"]').fill(user.phone_number[0]);
+  await page.locator('input[name="address"]').fill(user.address_[0]);
+  await page.locator('input[name="linkedIn"]').fill(user.linkedin_url[0]);
+  await page.locator('input[name="github"]').fill(user.github_url[0]);
+ 
 }
 
 async function fieldsLocators(page){
@@ -36,6 +60,8 @@ async function fieldsLocators(page){
   const githubField = page.locator('input[name="github"]');
   const submitButton = page.locator('input[type="submit"][value="Submit"]');
   const dobLabel = page.locator('label[for="dob"]');
+  const addressLabel = page.locator('label[for="address"]');
+
 
 
   return {
@@ -53,7 +79,8 @@ async function fieldsLocators(page){
     linkedinUrl,
     githubField,
     submitButton,
-    dobLabel
+    dobLabel,
+    addressLabel
   };
 
 }
@@ -63,6 +90,7 @@ async function verifyRegistrationSuccess(page) {
     expect(firstNameValue).toBe('');
 }
 
-module.exports = { navigate, fillRegistrationForm, verifyRegistrationSuccess, fieldsLocators };
+
+module.exports = { navigate, fillAllFields, verifyRegistrationSuccess, fieldsLocators, fillMandatoryFields, filOptionalFields };
 
 

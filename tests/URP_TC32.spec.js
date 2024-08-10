@@ -1,5 +1,5 @@
 const { test, expect } = require('@playwright/test');
-const { navigate, fieldsLocators } = require('../PageObject/RegistrationPagePOM');
+const {navigate, filOptionalFields } = require('../PageObject/RegistrationPagePOM');
 const { UserData } = require('../FixturesFile/fixturesData');
 
 test.describe('Registration Page Test', () => {
@@ -7,35 +7,31 @@ test.describe('Registration Page Test', () => {
     const user = UserData();
 
     let dialogHandled = false;
-
   
     test.beforeEach(async ({ page }) => {
-
       await navigate(page);
       
     });
 
-    test('Verify First Name Field correctly rejects white spaces between letters', async ({ page }) => {
+test('Verify Form Rejects Submission When Only Optional Fields Are Filled', async ({ page }) => {
     const locators = await fieldsLocators(page);
     
-    //Enters Invalid first name
-     await locators.firstName.fill(user.first_name[3]);
+//fills out all optional fields with valid data
+await filOptionalFields(page, user);
 
-  page.on('dialog', async dialog => {
+page.on('dialog', async dialog => {
     dialogHandled = true;
     try {
-      expect(dialog.message()).toBe('First name must contain alphabetical characters only');
+      expect(dialog.message()).toBe('First name must be filled out');
       await dialog.accept();
     } catch (error) {
       console.error('Error handling the dialog:', error);
       await dialog.dismiss(); 
     }
   });
+  
+await locators.submitButton.click()
 
-     await locators.submitButton.click()
-
-    });
-
-
+  });
 
 });
