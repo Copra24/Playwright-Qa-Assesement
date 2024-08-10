@@ -33,7 +33,7 @@ async function fillMandatoryFields(page) {
 
 }
 
-async function filOptionalFields(page) {
+async function fillOptionalFields(page) {
   
   await page.check('input#male');
   await page.fill('input#dob', user.date_Of_birth[0]);
@@ -91,6 +91,6 @@ async function verifyRegistrationSuccess(page) {
 }
 
 
-module.exports = { navigate, fillAllFields, verifyRegistrationSuccess, fieldsLocators, fillMandatoryFields, filOptionalFields };
+module.exports = { navigate, fillAllFields, verifyRegistrationSuccess, fieldsLocators, fillMandatoryFields, fillOptionalFields };
 
 
