@@ -18,7 +18,7 @@ test.describe('Registration Page Test', () => {
     //verify the first name input field is enabled
     await expect(locators.firstName).toBeEnabled();
     
-    //Enters First name John in the input box by capturing its value using its array index
+    //Enters First name John in the input box
      await locators.firstName.fill(user.first_name[0]);
 
      await locators.submitButton.click()
