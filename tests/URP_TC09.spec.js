@@ -4,19 +4,18 @@ const { UserData } = require('../FixturesFile/fixturesData');
 
 test.describe('Registration Page Test', () => {
 
-    const user = UserData();// Creates object of UserData
+    const user = UserData();
 
-    let dialogHandled = false;// Initialize a flag to track whether a dialog (such as an alert or confirmation) has been handled during the test
+    let dialogHandled = false;
     
     test.beforeEach(async ({ page }) => {
   
-      // Navigates to the registration page Url from the Pom
       await navigate(page);
       
     });
 
     test('Verify Last Name Field correctly rejects Alphabetical characters with Spaces', async ({ page }) => {
-    const locators = await fieldsLocators(page);//Create object of the fieldsLocators
+    const locators = await fieldsLocators(page);
 
     //Enter valid First name
     await locators.firstName.fill(user.first_name[0])
@@ -27,7 +26,6 @@ test.describe('Registration Page Test', () => {
   page.on('dialog', async dialog => {
     dialogHandled = true;
     try {
-      // Assert the alert message
       expect(dialog.message()).toBe('Last name must contain alphabetical characters only');
       await dialog.accept();
     } catch (error) {
@@ -36,7 +34,6 @@ test.describe('Registration Page Test', () => {
     }
   });
 
-     //Submits the form
      await locators.submitButton.click()
 
     });

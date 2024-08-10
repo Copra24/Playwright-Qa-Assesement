@@ -4,11 +4,11 @@ const { UserData } = require('../FixturesFile/fixturesData');
 
 test.describe('Registration Page Test', () => {
 
-    const user = UserData();// Creates object of UserData
+    const user = UserData();
   
     test.beforeEach(async ({ page }) => {
   
-      // Navigates to the registration page Url from the Pom
+     
       await navigate(page);
       
     });

@@ -4,16 +4,15 @@ const { UserData } = require('../FixturesFile/fixturesData');
 
 test.describe('Registration Page Test', () => {
 
-    const user = UserData();// Creates object of UserData
+    const user = UserData();
+
     test.beforeEach(async ({ page }) => {
-  
-      // Navigates to the registration page Url from the Pom
       await navigate(page);
       
     });
 
     test('Verify Email Field correctly rejects for missing "@" symbol', async ({ page }) => {
-    const locators = await fieldsLocators(page);//Create object of the fieldsLocators
+    const locators = await fieldsLocators(page);
 
     //Enter valid First name
     await locators.firstName.fill(user.first_name[0]);
@@ -23,7 +22,6 @@ test.describe('Registration Page Test', () => {
     await locators.email.fill(user.email_[1]);
 
     
-     //Submits the form
      await locators.submitButton.click()
 
      // Assert email field still contains invalid email after submitting form

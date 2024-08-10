@@ -4,9 +4,9 @@ const { UserData } = require('../FixturesFile/fixturesData');
 
 test.describe('Registration Page Test', () => {
 
-    const user = UserData();// Creates object of UserData
+    const user = UserData();
 
-    let dialogHandled = false;// Initialize a flag to track whether a dialog (such as an alert or confirmation) has been handled during the test
+    let dialogHandled = false;
 
   
     test.beforeEach(async ({ page }) => {
@@ -17,15 +17,15 @@ test.describe('Registration Page Test', () => {
     });
 
     test('Verify First Name field correclty  rejects Alphanumeric characters and Arithmetic Symbols', async ({ page }) => {
-    const locators = await fieldsLocators(page);//Create object of the fieldsLocators
+    const locators = await fieldsLocators(page);
     //Enters Invalid first name
      await locators.firstName.fill(user.first_name[2]);
 
-     // Handle the dialog that appears when the first name field is filled with Alphanumeric characters and Arithmetic Symbols
+     
   page.on('dialog', async dialog => {
     dialogHandled = true;
     try {
-      // Assert the alert message
+
       expect(dialog.message()).toBe('First name must contain alphabetical characters only');
       await dialog.accept();
     } catch (error) {
@@ -34,7 +34,7 @@ test.describe('Registration Page Test', () => {
     }
   });
 
-     //Submits the form
+     
      await locators.submitButton.click()
 
     });
