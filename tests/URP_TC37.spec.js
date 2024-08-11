@@ -7,11 +7,12 @@ test.describe('Registration Page Test', () => {
     const user = UserData();
   
     test.beforeEach(async ({ page }) => {
-      await navigate(page);
+
+      await page.goto('/');
       
     });
 
-test('Verify User Profile Is Not Created with Confirm Password  Field Left Unfilled', async ({ page }) => {
+test('Verify Form Correclty Rejects User Profile Creation with Confirm Password  Field Left Unfilled', async ({ page }) => {
     const locators = await fieldsLocators(page);
     
     await locators.confirmPassword.fill(user.confirm_password[0] = '');

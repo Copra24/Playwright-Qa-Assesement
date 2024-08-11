@@ -7,11 +7,12 @@ test.describe('Registration Page Test', () => {
     const user = UserData();
 
     test.beforeEach(async ({ page }) => {
-      await navigate(page);
+
+      await page.goto('/');
       
     });
 
-    test('Verify Email Field correctly rejects for missing "@" symbol', async ({ page }) => {
+    test('Verify Email Field Correctly Rejects User Profile Creation Wth Missing "@" Symbol', async ({ page }) => {
     const locators = await fieldsLocators(page);
 
     //Enter valid First name

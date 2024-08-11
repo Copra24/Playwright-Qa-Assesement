@@ -7,11 +7,12 @@ test.describe('Registration Page Test', () => {
     const user = UserData();
   
     test.beforeEach(async ({ page }) => {
-      await navigate(page);
+
+      await page.goto('/');
       
     });
 
-test('Verify Profile Is Created With All Fields Filled With Valid Data', async ({ page }) => {
+test('Verify Form Correctly Validates Profile Creation With All Fields Filled With Valid Data', async ({ page }) => {
     //fills out all fields with valid data
     await fillAllFields(page, user);
 

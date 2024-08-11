@@ -9,11 +9,11 @@ test.describe('Registration Page Test', () => {
     
     test.beforeEach(async ({ page }) => {
   
-      await navigate(page);
+      await page.goto('/');
       
     });
 
-    test('Verify Password Field Acceptance of Spaces Between Characters', async ({ page }) => {
+    test('Verify Password And Confirm Password Correctly Validate For Numeric Characters Filled Inn', async ({ page }) => {
     const locators = await fieldsLocators(page);
 
     //Enter valid First name

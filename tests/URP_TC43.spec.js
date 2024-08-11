@@ -7,11 +7,12 @@ test.describe('Registration Page Test', () => {
     const user = UserData();
   
     test.beforeEach(async ({ page }) => {
-      await navigate(page);
+
+      await page.goto('/');
       
     });
 
-test('Verify user profile is created with Invalid Linkedln URL Filled', async ({ page }) => {
+test('Verify Form Correctly Validates User Profile Creation with Invalid Linkedln URL Filled', async ({ page }) => {
     const locators = await fieldsLocators(page);
     
     await locators.linkedinUrl.fill(user.linkedin_url[1]);

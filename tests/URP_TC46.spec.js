@@ -8,11 +8,12 @@ test.describe('Registration Page Test', () => {
     const user = UserData();
   
     test.beforeEach(async ({ page }) => {
-      await navigate(page);
+
+      await page.goto('/');
       
     });
 
-test('Verify User Profile Is not  created when only First Name field is filled out', async ({ page }) => {
+test('Verify Form Correctly Rejects User Profile Creation With Only First Name Field Filled Out', async ({ page }) => {
     const locators = await fieldsLocators(page);
     
     await locators.firstName.fill(user.first_name[0]);

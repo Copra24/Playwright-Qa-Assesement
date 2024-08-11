@@ -9,11 +9,12 @@ test.describe('Registration Page Test', () => {
     let dialogHandled = false;
     
     test.beforeEach(async ({ page }) => {
-      await navigate(page);
+
+      await page.goto('/');
       
     });
 
-    test('Verify Email Field  correctly handles Case Insensitivity', async ({ page }) => {
+    test('Verify Email Field  Correctly Validates For Case Insensitivity', async ({ page }) => {
     const locators = await fieldsLocators(page);
 
     //Enter valid First name

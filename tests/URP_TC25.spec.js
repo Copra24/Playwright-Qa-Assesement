@@ -9,11 +9,11 @@ test.describe('Registration Page Test', () => {
   
     test.beforeEach(async ({ page }) => {
   
-      await navigate(page);
+      await page.goto('/');
       
     });
 
-    test('Verify Address Field Acceptance of Valid Input', async ({ page }) => {
+    test('Verify Address Field Correctly Validates With Valid Address Input', async ({ page }) => {
     const locators = await fieldsLocators(page);
       
         // Fill the address field with invalid input

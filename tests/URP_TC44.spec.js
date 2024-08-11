@@ -8,11 +8,12 @@ test.describe('Registration Page Test', () => {
     const user = UserData();
   
     test.beforeEach(async ({ page }) => {
-      await navigate(page);
+
+      await page.goto('/');
       
     });
 
-test('Verify User Profile Is Created with GitHub URL Field Left Unfilled', async ({ page }) => {
+test('Verify Form Correctly Validates User Profile Creation with GitHub URL Field Left Unfilled', async ({ page }) => {
     const locators = await fieldsLocators(page);
     
     await locators.githubField.fill(user.github_url[0]='');

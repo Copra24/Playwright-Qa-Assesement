@@ -11,12 +11,11 @@ test.describe('Registration Page Test', () => {
   
     test.beforeEach(async ({ page }) => {
   
-      // Navigates to the registration page Url from the Pom
-      await navigate(page);
+      await page.goto('/');
       
     });
 
-    test('Verify First Name field correclty  rejects Alphanumeric characters and Arithmetic Symbols', async ({ page }) => {
+    test('Verify First Name field Correclty  Rejects Alphanumeric Characters and Arithmetic Symbols', async ({ page }) => {
     const locators = await fieldsLocators(page);
     //Enters Invalid first name
      await locators.firstName.fill(user.first_name[2]);

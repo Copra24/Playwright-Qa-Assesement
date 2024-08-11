@@ -1,4 +1,4 @@
-const { test, expect } = require('./my-setup');
+const { test, expect } = require('@playwright/test');
 const { navigate, fieldsLocators } = require('../PageObject/RegistrationPagePOM');
 const { UserData } = require('../FixturesFile/fixturesData');
 
@@ -10,11 +10,11 @@ test.describe('Registration Page Test', () => {
     test.beforeEach(async ({ page }) => {
   
       // Navigates to the registration page Url from the Pom
-      await navigate(page);
+      await page.goto('/');
       
     });
 
-    test('Verify Successful Submission with Valid Alphabetical Input in "First Name" Field', async ({page }) => {
+    test('Verify Form Correctly Validates Profile Creation With Valid Alphabetic Characters Filled in First Name Field', async ({page }) => {
     const locators = await fieldsLocators(page);//Create object of the fieldsLocators
     //verify the first name input field is enabled
     await expect(locators.firstName).toBeEnabled();

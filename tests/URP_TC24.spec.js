@@ -8,11 +8,12 @@ test.describe('Registration Page Test', () => {
     const user = UserData();
   
     test.beforeEach(async ({ page }) => {
-      await navigate(page);
+
+      await page.goto('/');
       
     });
 
-    test('Verify Phone Number Field correctly  rejects  alphabetic characters', async ({ page }) => {
+    test('Verify Phone Number Field Correctly  Rejects  Alphabetic Characters', async ({ page }) => {
     const locators = await fieldsLocators(page);
 
     // Attempt to fill the phone number field with alphabetic characters
@@ -21,7 +22,7 @@ test.describe('Registration Page Test', () => {
 
     // Assert that the input value does not contain alphabetic characters
     const phoneNumberValue = await locators.phoneNumber.inputValue();
-    
+
     // Removes any alphabetic characters
     const expectedValue = phoneNumberValue.replace(/[a-zA-Z]/g, ''); 
 

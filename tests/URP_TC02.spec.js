@@ -10,8 +10,7 @@ test.describe('Registration Page Test', () => {
 
     test.beforeEach(async ({ page }) => {
   
-      // Navigates to the registration page Url from the Pom
-      await navigate(page);
+      await page.goto('/');
       
     });
 
