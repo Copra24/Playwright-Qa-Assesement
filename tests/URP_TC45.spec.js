@@ -7,14 +7,15 @@ test.describe('Registration Page Test', () => {
     const user = UserData();
   
     test.beforeEach(async ({ page }) => {
-      await navigate(page);
+
+      await page.goto('/');
       
     });
 
-test('Verify user profile is vreated with Invalid GitHub URL input in Githurb optional  field while mandatory fields are filled in with valid data', async ({ page }) => {
+test('Verify Form Correctly Rejects User Profile Creation with Invalid GitHub URL Filled', async ({ page }) => {
     const locators = await fieldsLocators(page);
     
-    await locators.githubField.fill(user.github_url[0]='');
+    await locators.githubField.fill(user.github_url[1]);
 
   await fillMandatoryFields(page, user);//Fills mandatory Fields
 

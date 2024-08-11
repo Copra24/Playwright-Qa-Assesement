@@ -10,11 +10,11 @@ test.describe('Registration Page Test', () => {
   
     test.beforeEach(async ({ page }) => {
   
-      await navigate(page);
+        await page.goto('/');
       
     });
 
-    test('Verify Address Field Acceptance of Special Characters', async ({ page }) => {
+    test('Verify Address Correctly Validates With Special Characters Filled', async ({ page }) => {
     const locators = await fieldsLocators(page);
       
         // Fill the address field with invalid input
@@ -30,7 +30,7 @@ test.describe('Registration Page Test', () => {
               await dialog.dismiss(); 
             }
           });
-          
+
      await locators.submitButton.click()
         
 

@@ -7,11 +7,12 @@ test.describe('Registration Page Test', () => {
     const user = UserData();
   
     test.beforeEach(async ({ page }) => {
-      await navigate(page);
+
+      await page.goto('/');
       
     });
 
-test('Verify User Profile Not Created with Last Name Field Left Unfilled', async ({ page }) => {
+test('Verify form correctly rejects User Profile Creation with Last Name Field Left Unfilled', async ({ page }) => {
     const locators = await fieldsLocators(page);
     
     await locators.lastName.fill(user.last_name[0] = '');

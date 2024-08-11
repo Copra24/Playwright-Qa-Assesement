@@ -11,12 +11,11 @@ test.describe('Registration Page Test', () => {
   
     test.beforeEach(async ({ page }) => {
   
-      // Navigates to the registration page Url from the Pom
-      await navigate(page);
+      await page.goto('/');
       
     });
 
-    test('Verify First Name Field correctly rejects numerical characters', async ({ page }) => {
+    test('Verify First Name Field Correctly Rejects Numeric Characters', async ({ page }) => {
     const locators = await fieldsLocators(page);
     //verify the first name input field is enabled
     await expect(locators.firstName).toBeEnabled();

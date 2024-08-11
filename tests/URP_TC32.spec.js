@@ -9,7 +9,8 @@ test.describe('Registration Page Test', () => {
     let dialogHandled = false;
   
     test.beforeEach(async ({ page }) => {
-      await navigate(page);
+
+      await page.goto('/');
       
     });
 

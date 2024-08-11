@@ -9,11 +9,11 @@ test.describe('Registration Page Test', () => {
     test.beforeEach(async ({ page }) => {
   
      
-      await navigate(page);
+      await page.goto('/');
       
     });
 
-    test('Verify successful submission with valid alphabetical input in "Last Name" field', async ({ page }) => {
+    test('Verify Form Correctly Validates User Profile Creation With Valid Alphabetic Characters Filled in Last Name Field', async ({ page }) => {
     const locators = await fieldsLocators(page);//Create object of the fieldsLocators
     //verifies the last name input field is enabled
     await expect(locators.firstName).toBeEnabled();

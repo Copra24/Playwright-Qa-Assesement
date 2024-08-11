@@ -2,10 +2,6 @@ const { expect } = require('@playwright/test');
 const { UserData } = require('../FixturesFile/fixturesData');
 const user = UserData();
 
-async function navigate(page) {
-  await page.goto('https://qa-assessment.pages.dev/');
-}
-
 async function fillAllFields(page) {
  
   await page.locator('input[name="firstName"]').fill(user.first_name[0]);

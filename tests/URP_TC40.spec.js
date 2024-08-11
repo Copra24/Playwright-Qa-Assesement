@@ -7,11 +7,12 @@ test.describe('Registration Page Test', () => {
     const user = UserData();
   
     test.beforeEach(async ({ page }) => {
-      await navigate(page);
+
+      await page.goto('/');
       
     });
 
-test('Verify User Profile Is Created with Phone Number Field Left Unfilled', async ({ page }) => {
+test('Verify Form Correctly Rejects User Profile Creation when Phone Number Field Is Filled With Invalid Phone Number Digits', async ({ page }) => {
     const locators = await fieldsLocators(page);
     
     await locators.phoneNumber.fill(user.phone_number[2]);

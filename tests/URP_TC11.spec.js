@@ -10,11 +10,11 @@ test.describe('Registration Page Test', () => {
     
     test.beforeEach(async ({ page }) => {
   
-      await navigate(page);
+      await page.goto('/');
       
     });
 
-    test('Verify Last Name Field correctly rejects Arithmetic Symbols', async ({ page }) => {
+    test('Verify Last Name Field Correctly Rejects Arithmetic Symbols', async ({ page }) => {
     const locators = await fieldsLocators(page);
 
     //Enter valid First name

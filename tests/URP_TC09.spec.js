@@ -10,11 +10,11 @@ test.describe('Registration Page Test', () => {
     
     test.beforeEach(async ({ page }) => {
   
-      await navigate(page);
+      await page.goto('/');
       
     });
 
-    test('Verify Last Name Field correctly rejects Alphabetical characters with Spaces', async ({ page }) => {
+    test('Verify Last Name Field correctly Rejects Alphabetic Characters With White Spaces', async ({ page }) => {
     const locators = await fieldsLocators(page);
 
     //Enter valid First name

@@ -11,11 +11,11 @@ test.describe('Registration Page Test', () => {
   
     test.beforeEach(async ({ page }) => {
 
-      await navigate(page);
+      await page.goto('/');
       
     });
 
-    test('Verify First Name Field correctly rejects white spaces between letters', async ({ page }) => {
+    test('Verify First Name Field correctly rejects white Spaces Between Letters', async ({ page }) => {
     const locators = await fieldsLocators(page);
     
     //Enters Invalid first name

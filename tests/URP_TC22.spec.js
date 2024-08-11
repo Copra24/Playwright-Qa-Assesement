@@ -8,11 +8,12 @@ test.describe('Registration Page Test', () => {
     const user = UserData();
 
     test.beforeEach(async ({ page }) => {
-      await navigate(page);
+
+      await page.goto('/');
       
     });
 
-    test('Verify Date of Birth Field Acceptance of Valid Date Format', async ({ page }) => {
+    test('Verify Date of Birth Field Correctly Validate For Expected Date Format', async ({ page }) => {
     const locators = await fieldsLocators(page);
     //Fills in date of birth with valid input
     await locators.dob.fill(user.date_Of_birth[0]);

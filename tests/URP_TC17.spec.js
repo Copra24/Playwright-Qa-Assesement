@@ -9,11 +9,12 @@ test.describe('Registration Page Test', () => {
     let dialogHandled = false;
     
     test.beforeEach(async ({ page }) => {
-      await navigate(page);
+
+      await page.goto('/');
       
     });
 
-    test('Verify Password Field Acceptance of Spaces Between Characters', async ({ page }) => {
+    test('Verify Password And Confirm Password Field Correctly Rejects User Profile Creation With White Spaces Between Characters', async ({ page }) => {
     const locators = await fieldsLocators(page);
 
     //Enter valid First name
@@ -22,9 +23,9 @@ test.describe('Registration Page Test', () => {
     await locators.lastName.fill(user.last_name[0]);
     //Enters valid Email
     await locators.email.fill(user.email_[0]);
-    //Enters valid password
+    //Enters invalid password
     await locators.password.fill(user.password_[1])
-    //Enters valid Confirm password
+    //Enters invalid Confirm password
     await locators.confirmPassword.fill(user.confirm_password[1])
 
 

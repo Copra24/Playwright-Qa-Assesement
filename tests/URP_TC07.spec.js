@@ -10,11 +10,12 @@ test.describe('Registration Page Test', () => {
 
   
     test.beforeEach(async ({ page }) => {
-      await navigate(page);
+
+      await page.goto('/');
       
     });
 
-    test('Verify Last Name Field correctly accept Capitalized alphabetic characters', async ({ page }) => {
+    test('Verify Last Name Field Correctly Validates Capitalized Alphabetic Characters', async ({ page }) => {
     const locators = await fieldsLocators(page);
     //Enter valid First name
     await locators.firstName.fill(user.first_name[0])

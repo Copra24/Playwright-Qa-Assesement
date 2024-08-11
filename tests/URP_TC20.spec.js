@@ -4,16 +4,14 @@ const { UserData } = require('../FixturesFile/fixturesData');
 
 test.describe('Registration Page Test', () => {
 
-    const user = UserData();
-
-    let dialogHandled = false;
     
     test.beforeEach(async ({ page }) => {
-      await navigate(page);   
+
+      await page.goto('/');  
     });
 
 
-    test('Verify Gender Option Selection', async ({ page }) => {
+    test('Verify Gender Field Options  Selection Checks On Click Correctly', async ({ page }) => {
     const locators = await fieldsLocators(page);
 
     //Gender selection Female

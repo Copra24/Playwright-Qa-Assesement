@@ -9,11 +9,12 @@ test.describe('Registration Page Test', () => {
     let dialogHandled = false;
     
     test.beforeEach(async ({ page }) => {
-      await navigate(page);
+
+      await page.goto('/');
       
     });
 
-    test('Verify Password Field Acceptance of Spaces Between Characters', async ({ page }) => {
+    test('Verify Confirm Password Field Correctly Validates For special Characters and Symbols Filled', async ({ page }) => {
     const locators = await fieldsLocators(page);
 
     //Enter valid First name

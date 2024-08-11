@@ -6,12 +6,13 @@ test.describe('Registration Page Test', () => {
 
     const user = UserData();
     test.beforeEach(async ({ page }) => {
-      await navigate(page);
+
+      await page.goto('/');
       
     });
 
 
-    test('Verify the date of birth  field label is correctly displayed', async ({ page }) => {
+    test('Verify Date Of Birth  Field Label Displays Correctly As Expected', async ({ page }) => {
     const locators = await fieldsLocators(page);
           //Asserts the text content of lable is correctly displayed
           expect(locators.dobLabel).toHaveValue('Date of Birth (optional):')

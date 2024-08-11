@@ -7,11 +7,12 @@ test.describe('Registration Page Test', () => {
     const user = UserData();
   
     test.beforeEach(async ({ page }) => {
-      await navigate(page);
+
+      await page.goto('/');
       
     });
 
-test('Verify Profile Is Created With  Only Mandatory Fields Filled', async ({ page }) => {
+test('Verify Form Correctly Validates Profile Creation With  Only Mandatory Fields Filled', async ({ page }) => {
     //fills out all mandatory fields with valid data
     await fillMandatoryFields(page, user);
 

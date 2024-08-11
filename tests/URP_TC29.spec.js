@@ -10,11 +10,11 @@ test.describe('Registration Page Test', () => {
   
     test.beforeEach(async ({ page }) => {
   
-      await navigate(page);
+        await page.goto('/');
       
     });
 
-    test('Verify GitHub URL Field Acceptance of Valid URL', async ({ page }) => {
+    test('Verify GitHub URL Field Correctly Validates With Valid URL Filled', async ({ page }) => {
     const locators = await fieldsLocators(page);
       
         // Fill the Github field with valid input

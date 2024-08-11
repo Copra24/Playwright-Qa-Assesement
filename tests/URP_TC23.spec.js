@@ -7,11 +7,12 @@ test.describe('Registration Page Test', () => {
     const user = UserData();
   
     test.beforeEach(async ({ page }) => {
-      await navigate(page);
+
+      await page.goto('/');
       
     });
 
-    test('Verify Phone Number Field Acceptance of Numerical Characters', async ({ page }) => {
+    test('Verify Phone Number Field Correctly Validates With Numeric Characters', async ({ page }) => {
     const locators = await fieldsLocators(page);
       
         // Fill the phone number field with a valid numeric input

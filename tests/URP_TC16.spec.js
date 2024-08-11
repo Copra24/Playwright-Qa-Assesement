@@ -9,11 +9,12 @@ test.describe('Registration Page Test', () => {
     let dialogHandled = false;
     
     test.beforeEach(async ({ page }) => {
-      await navigate(page);
+
+      await page.goto('/');
       
     });
 
-    test('Verify Password Field accepts Alphanumeric characters and symbols', async ({ page }) => {
+    test('Verify Password Field Correctly Validates Alphanumeric Characters And Symbols', async ({ page }) => {
     const locators = await fieldsLocators(page);
 
     //Enter valid First name
@@ -41,7 +42,7 @@ test.describe('Registration Page Test', () => {
       await dialog.dismiss(); 
     }
   });
-  
+
      await locators.submitButton.click()
 
     });
