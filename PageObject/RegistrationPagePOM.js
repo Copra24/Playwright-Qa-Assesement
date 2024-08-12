@@ -87,6 +87,6 @@ async function verifyRegistrationSuccess(page) {
 }
 
 
-module.exports = { navigate, fillAllFields, verifyRegistrationSuccess, fieldsLocators, fillMandatoryFields, fillOptionalFields };
+module.exports = { fillAllFields, verifyRegistrationSuccess, fieldsLocators, fillMandatoryFields, fillOptionalFields };
 
 
